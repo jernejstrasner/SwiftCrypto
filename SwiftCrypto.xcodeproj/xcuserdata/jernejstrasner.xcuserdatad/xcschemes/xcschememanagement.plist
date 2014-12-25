@@ -4,19 +4,24 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>SwiftCrypto.xcscheme</key>
+		<key>CryptoApp.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
-		</dict>
-		<key>SwiftCryptoTests.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>B81495BC19EDB6E3008BC391</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B81495D019EDB6E4008BC391</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B8A4E5E319EB333A002CA063</key>
 		<dict>
 			<key>primary</key>

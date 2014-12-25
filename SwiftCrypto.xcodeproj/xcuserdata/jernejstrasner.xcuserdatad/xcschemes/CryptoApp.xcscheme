@@ -9,14 +9,28 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B81495BC19EDB6E3008BC391"
+               BuildableName = "CryptoApp.app"
+               BlueprintName = "CryptoApp"
+               ReferencedContainer = "container:SwiftCrypto.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B8A4E5EE19EB333A002CA063"
-               BuildableName = "SwiftCryptoTests.xctest"
-               BlueprintName = "SwiftCryptoTests"
+               BlueprintIdentifier = "B81495D019EDB6E4008BC391"
+               BuildableName = "CryptoAppTests.xctest"
+               BlueprintName = "CryptoAppTests"
                ReferencedContainer = "container:SwiftCrypto.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +46,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B8A4E5EE19EB333A002CA063"
-               BuildableName = "SwiftCryptoTests.xctest"
-               BlueprintName = "SwiftCryptoTests"
+               BlueprintIdentifier = "B81495D019EDB6E4008BC391"
+               BuildableName = "CryptoAppTests.xctest"
+               BlueprintName = "CryptoAppTests"
                ReferencedContainer = "container:SwiftCrypto.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,9 +56,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B8A4E5EE19EB333A002CA063"
-            BuildableName = "SwiftCryptoTests.xctest"
-            BlueprintName = "SwiftCryptoTests"
+            BlueprintIdentifier = "B81495BC19EDB6E3008BC391"
+            BuildableName = "CryptoApp.app"
+            BlueprintName = "CryptoApp"
             ReferencedContainer = "container:SwiftCrypto.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -58,15 +72,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B8A4E5EE19EB333A002CA063"
-            BuildableName = "SwiftCryptoTests.xctest"
-            BlueprintName = "SwiftCryptoTests"
+            BlueprintIdentifier = "B81495BC19EDB6E3008BC391"
+            BuildableName = "CryptoApp.app"
+            BlueprintName = "CryptoApp"
             ReferencedContainer = "container:SwiftCrypto.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -76,15 +90,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B8A4E5EE19EB333A002CA063"
-            BuildableName = "SwiftCryptoTests.xctest"
-            BlueprintName = "SwiftCryptoTests"
+            BlueprintIdentifier = "B81495BC19EDB6E3008BC391"
+            BuildableName = "CryptoApp.app"
+            BlueprintName = "CryptoApp"
             ReferencedContainer = "container:SwiftCrypto.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
