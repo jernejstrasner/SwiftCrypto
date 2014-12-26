@@ -1,28 +1,27 @@
 //
-//  CryptoAppTests.swift
-//  CryptoAppTests
+//  SwiftCryptoTests.swift
+//  SwiftCryptoTests
 //
-//  Created by Jernej Strasner on 10/14/14.
+//  Created by Jernej Strasner on 12/26/14.
 //  Copyright (c) 2014 Jernej Strasner. All rights reserved.
 //
 
-import UIKit
-import XCTest
 import Foundation
+import XCTest
 
-class CryptoAppTests: XCTestCase {
+class SwiftCryptoTests: XCTestCase {
+    
+    func testHMAC() {
+        let string = "test string"
+        let key = "test key"
 
-	func testHMAC() {
-		let string = "test string"
-		let key = "test key"
-
-		XCTAssertEqual(string.hmac(.MD5, key: key), "1772c4c9cea1f65ad562a397b375ae76")
-		XCTAssertEqual(string.hmac(.SHA1, key: key), "1cf3356aa06b7a7352b6c2297243c6fcebad08ed")
-		XCTAssertEqual(string.hmac(.SHA224, key: key), "1cc53342522ed67aa94519bf25bc3917121747e1365bf803cd4c1ff5")
-		XCTAssertEqual(string.hmac(.SHA256, key: key), "6864a9fdc9bc77190c4bc6d1d875a0afe19461907f486f4ba5213a1f15b71cc9")
-		XCTAssertEqual(string.hmac(.SHA384, key: key), "b1f88b509b61d62bea22ccc22e252b594b49690b4de0e73b747b0d4001eb64201b2eadee098a217d40a3a67a3dbd1f9e")
-		XCTAssertEqual(string.hmac(.SHA512, key: key), "95c32d6bab8dd4942d59a6b7551fb9647226a221f805af7e125d72326888e973043a57cf8326f206e68c8fb214baeb2d35146e8af0f3106a50b7a36091e96e00")
-	}
+        XCTAssertEqual(string.hmac(.MD5, key: key), "1772c4c9cea1f65ad562a397b375ae76")
+        XCTAssertEqual(string.hmac(.SHA1, key: key), "1cf3356aa06b7a7352b6c2297243c6fcebad08ed")
+        XCTAssertEqual(string.hmac(.SHA224, key: key), "1cc53342522ed67aa94519bf25bc3917121747e1365bf803cd4c1ff5")
+        XCTAssertEqual(string.hmac(.SHA256, key: key), "6864a9fdc9bc77190c4bc6d1d875a0afe19461907f486f4ba5213a1f15b71cc9")
+        XCTAssertEqual(string.hmac(.SHA384, key: key), "b1f88b509b61d62bea22ccc22e252b594b49690b4de0e73b747b0d4001eb64201b2eadee098a217d40a3a67a3dbd1f9e")
+        XCTAssertEqual(string.hmac(.SHA512, key: key), "95c32d6bab8dd4942d59a6b7551fb9647226a221f805af7e125d72326888e973043a57cf8326f206e68c8fb214baeb2d35146e8af0f3106a50b7a36091e96e00")
+    }
 
     func testDigest() {
         let string = "test string"
