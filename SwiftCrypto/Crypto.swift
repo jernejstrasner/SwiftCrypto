@@ -61,11 +61,10 @@ extension String {
         let strLen = UInt(self.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
         let digestLen = algorithm.digestLength
         let result = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLen)
-        let objcKey = key as NSString
-        let keyStr = objcKey.cStringUsingEncoding(NSUTF8StringEncoding)
-        let keyLen = UInt(objcKey.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+        let keyStr = key.cStringUsingEncoding(NSUTF8StringEncoding)
+        let keyLen = UInt(key.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
 
-        CCHmac(algorithm.HMACAlgorithm, keyStr, keyLen, str!, strLen, result)
+        CCHmac(algorithm.HMACAlgorithm, keyStr!, keyLen, str!, strLen, result)
 
         let digest = stringFromResult(result, length: digestLen)
 
