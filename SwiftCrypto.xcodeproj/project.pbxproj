@@ -16,7 +16,7 @@
 		B85C691C1A4D6B4400E43846 /* SwiftCryptoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftCryptoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B85C69221A4D6B4400E43846 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B85C69231A4D6B4400E43846 /* SwiftCryptoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCryptoTests.swift; sourceTree = "<group>"; };
-		B8A4E5FD19EB336D002CA063 /* Crypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Crypto.swift; path = ../SwiftCrypto/Crypto.swift; sourceTree = "<group>"; };
+		B8A4E5FD19EB336D002CA063 /* Crypto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Crypto.swift; path = SwiftCrypto/Crypto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,7 +33,6 @@
 		B85C69201A4D6B4400E43846 /* SwiftCryptoTests */ = {
 			isa = PBXGroup;
 			children = (
-				B8A4E5FD19EB336D002CA063 /* Crypto.swift */,
 				B85C69231A4D6B4400E43846 /* SwiftCryptoTests.swift */,
 				B85C69211A4D6B4400E43846 /* Supporting Files */,
 			);
@@ -52,6 +51,7 @@
 		B8A4E5DA19EB333A002CA063 = {
 			isa = PBXGroup;
 			children = (
+				B8A4E5FD19EB336D002CA063 /* Crypto.swift */,
 				B85C69201A4D6B4400E43846 /* SwiftCryptoTests */,
 				B8A4E5E519EB333A002CA063 /* Products */,
 			);
