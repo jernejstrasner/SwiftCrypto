@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CommonCrypto
 
 enum CryptoAlgorithm {
 	case MD5, SHA1, SHA224, SHA256, SHA384, SHA512
@@ -39,7 +38,7 @@ enum CryptoAlgorithm {
     }
 
     var digestLength: Int {
-        var result: CInt = 0
+        var result: Int32 = 0
         switch self {
         case .MD5:		result = CC_MD5_DIGEST_LENGTH
         case .SHA1:		result = CC_SHA1_DIGEST_LENGTH
@@ -58,17 +57,17 @@ extension String {
 
     func hmac(algorithm: CryptoAlgorithm, key: String) -> String {
         let str = self.cStringUsingEncoding(NSUTF8StringEncoding)
-        let strLen = UInt(self.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+        let strLen = Int(self.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
         let digestLen = algorithm.digestLength
         let result = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLen)
         let keyStr = key.cStringUsingEncoding(NSUTF8StringEncoding)
-        let keyLen = UInt(key.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+        let keyLen = Int(key.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
 
         CCHmac(algorithm.HMACAlgorithm, keyStr!, keyLen, str!, strLen, result)
 
         let digest = stringFromResult(result, length: digestLen)
 
-        result.destroy()
+        result.dealloc(digestLen)
 
         return digest
     }
@@ -109,7 +108,7 @@ extension String {
 
         let digest = stringFromResult(result, length: digestLen)
 
-        result.destroy()
+        result.dealloc(digestLen)
 
         return digest
     }
