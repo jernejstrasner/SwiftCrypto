@@ -23,20 +23,20 @@
 import Foundation
 
 enum CryptoAlgorithm {
-	case MD5, SHA1, SHA224, SHA256, SHA384, SHA512
+    case MD5, SHA1, SHA224, SHA256, SHA384, SHA512
 
     var HMACAlgorithm: CCHmacAlgorithm {
-		var result: Int = 0
-		switch self {
-		case .MD5:		result = kCCHmacAlgMD5
-		case .SHA1:		result = kCCHmacAlgSHA1
-		case .SHA224:	result = kCCHmacAlgSHA224
-		case .SHA256:	result = kCCHmacAlgSHA256
-		case .SHA384:	result = kCCHmacAlgSHA384
-		case .SHA512:	result = kCCHmacAlgSHA512
-		}
-		return CCHmacAlgorithm(result)
-	}
+        var result: Int = 0
+        switch self {
+        case .MD5:		result = kCCHmacAlgMD5
+        case .SHA1:		result = kCCHmacAlgSHA1
+        case .SHA224:	result = kCCHmacAlgSHA224
+        case .SHA256:	result = kCCHmacAlgSHA256
+        case .SHA384:	result = kCCHmacAlgSHA384
+        case .SHA512:	result = kCCHmacAlgSHA512
+        }
+        return CCHmacAlgorithm(result)
+    }
 
     typealias DigestAlgorithm = (UnsafePointer<Void>, CC_LONG, UnsafeMutablePointer<CUnsignedChar>) -> UnsafeMutablePointer<CUnsignedChar>
 
@@ -130,7 +130,7 @@ extension String {
     // MARK: Private
 
     private func stringFromResult(result: UnsafeMutablePointer<CUnsignedChar>, length: Int) -> String {
-        var hash = NSMutableString()
+        let hash = NSMutableString()
         for i in 0..<length {
             hash.appendFormat("%02x", result[i])
         }

@@ -74,8 +74,8 @@ class SwiftCryptoTests: XCTestCase {
     }
 
     func generateTestStrings(count: Int) -> [String] {
-        var strings: [String] = []
-        for i in 0..<count {
+        var strings = [String]()
+        for _ in 0..<count {
             strings.append(NSUUID().UUIDString)
         }
         return strings
