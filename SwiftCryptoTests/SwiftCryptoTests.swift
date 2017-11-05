@@ -29,12 +29,12 @@ class SwiftCryptoTests: XCTestCase {
         let string = "test string"
         let key = "test key"
 
-        XCTAssertEqual(string.hmac(.MD5, key: key), "1772c4c9cea1f65ad562a397b375ae76")
-        XCTAssertEqual(string.hmac(.SHA1, key: key), "1cf3356aa06b7a7352b6c2297243c6fcebad08ed")
-        XCTAssertEqual(string.hmac(.SHA224, key: key), "1cc53342522ed67aa94519bf25bc3917121747e1365bf803cd4c1ff5")
-        XCTAssertEqual(string.hmac(.SHA256, key: key), "6864a9fdc9bc77190c4bc6d1d875a0afe19461907f486f4ba5213a1f15b71cc9")
-        XCTAssertEqual(string.hmac(.SHA384, key: key), "b1f88b509b61d62bea22ccc22e252b594b49690b4de0e73b747b0d4001eb64201b2eadee098a217d40a3a67a3dbd1f9e")
-        XCTAssertEqual(string.hmac(.SHA512, key: key), "95c32d6bab8dd4942d59a6b7551fb9647226a221f805af7e125d72326888e973043a57cf8326f206e68c8fb214baeb2d35146e8af0f3106a50b7a36091e96e00")
+        XCTAssertEqual(string.hmac(.md5, key: key), "1772c4c9cea1f65ad562a397b375ae76")
+        XCTAssertEqual(string.hmac(.sha1, key: key), "1cf3356aa06b7a7352b6c2297243c6fcebad08ed")
+        XCTAssertEqual(string.hmac(.sha224, key: key), "1cc53342522ed67aa94519bf25bc3917121747e1365bf803cd4c1ff5")
+        XCTAssertEqual(string.hmac(.sha256, key: key), "6864a9fdc9bc77190c4bc6d1d875a0afe19461907f486f4ba5213a1f15b71cc9")
+        XCTAssertEqual(string.hmac(.sha384, key: key), "b1f88b509b61d62bea22ccc22e252b594b49690b4de0e73b747b0d4001eb64201b2eadee098a217d40a3a67a3dbd1f9e")
+        XCTAssertEqual(string.hmac(.sha512, key: key), "95c32d6bab8dd4942d59a6b7551fb9647226a221f805af7e125d72326888e973043a57cf8326f206e68c8fb214baeb2d35146e8af0f3106a50b7a36091e96e00")
     }
 
     func testDigest() {
@@ -49,34 +49,34 @@ class SwiftCryptoTests: XCTestCase {
     }
 
     func testHMACPerformance() {
-        let algorithms: [CryptoAlgorithm] = [.MD5, .SHA1, .SHA224, .SHA256, .SHA384, .SHA512]
+        let algorithms: [CryptoAlgorithm] = [.md5, .sha1, .sha224, .sha256, .sha384, .sha512]
         let strings = generateTestStrings(100)
         let key = "test key"
-        measureBlock {
+        measure {
             for a in algorithms {
                 for s in strings {
-                    s.hmac(a, key: key)
+                    _ = s.hmac(a, key: key)
                 }
             }
         }
     }
 
     func testDigestPerformance() {
-        let algorithms: [CryptoAlgorithm] = [.MD5, .SHA1, .SHA224, .SHA256, .SHA384, .SHA512]
+        let algorithms: [CryptoAlgorithm] = [.md5, .sha1, .sha224, .sha256, .sha384, .sha512]
         let strings = generateTestStrings(100)
-        measureBlock {
+        measure {
             for a in algorithms {
                 for s in strings {
-                    s.digest(a)
+                    _ = s.digest(a)
                 }
             }
         }
     }
 
-    func generateTestStrings(count: Int) -> [String] {
+    func generateTestStrings(_ count: Int) -> [String] {
         var strings = [String]()
         for _ in 0..<count {
-            strings.append(NSUUID().UUIDString)
+            strings.append(UUID().uuidString)
         }
         return strings
     }
