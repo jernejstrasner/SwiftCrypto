@@ -70,12 +70,12 @@ extension String {
     // MARK: HMAC
 
     func hmac(_ algorithm: CryptoAlgorithm, key: String) -> String {
-        let str = self.cString(using: String.Encoding.utf8)
-        let strLen = Int(self.lengthOfBytes(using: String.Encoding.utf8))
+        let str = self.cString(using: .utf8)
+        let strLen = Int(self.lengthOfBytes(using: .utf8))
         let digestLen = algorithm.digestLength
         let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
-        let keyStr = key.cString(using: String.Encoding.utf8)
-        let keyLen = Int(key.lengthOfBytes(using: String.Encoding.utf8))
+        let keyStr = key.cString(using: .utf8)
+        let keyLen = Int(key.lengthOfBytes(using: .utf8))
 
         CCHmac(algorithm.HMACAlgorithm, keyStr!, keyLen, str!, strLen, result)
 
@@ -113,8 +113,8 @@ extension String {
     }
 
     func digest(_ algorithm: CryptoAlgorithm) -> String {
-        let str = self.cString(using: String.Encoding.utf8)
-        let strLen = CC_LONG(self.lengthOfBytes(using: String.Encoding.utf8))
+        let str = self.cString(using: .utf8)
+        let strLen = CC_LONG(self.lengthOfBytes(using: .utf8))
         let digestLen = algorithm.digestLength
         let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
 
