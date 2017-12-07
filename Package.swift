@@ -3,6 +3,12 @@ import PackageDescription
 
 let package = Package(
     name: "SwiftCrypto",
+    products: [
+        .library(
+            name: "SwiftCrypto",
+            targets: ["SwiftCrypto"]
+        )
+    ],
     dependencies: [
         .package(url: "https://github.com/jernejstrasner/CCommonCrypto.git", .branch("master"))
     ],
