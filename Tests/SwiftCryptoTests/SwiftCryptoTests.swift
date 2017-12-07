@@ -22,7 +22,7 @@
 
 import Foundation
 import XCTest
-import Crypto
+import SwiftCrypto
 
 class SwiftCryptoTests: XCTestCase {
     
