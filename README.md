@@ -1,6 +1,8 @@
 # SwiftCrypto
 A simple wrapper in Swift around the CommonCrypto framework.
 
+[![Build Status](https://travis-ci.org/jernejstrasner/SwiftCrypto.svg?branch=master)](https://travis-ci.org/jernejstrasner/SwiftCrypto)
+
 # Swift Package Manager
 ```swift
 // swift-tools-version:4.0
