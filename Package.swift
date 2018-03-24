@@ -10,7 +10,7 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/jernejstrasner/CCommonCrypto.git", .branch("master"))
+        .package(url: "https://github.com/jernejstrasner/CCommonCrypto.git", from: "1.1.0")
     ],
     targets: [
         .target(
