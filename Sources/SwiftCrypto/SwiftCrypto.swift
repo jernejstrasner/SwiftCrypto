@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015 Jernej Strasner
+// Copyright (c) 2018 Jernej Strasner
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,7 +23,7 @@
 import Foundation
 import CCommonCrypto
 
-public enum CryptoAlgorithm {
+public enum Algorithm {
     case md5, sha1, sha224, sha256, sha384, sha512
 
     fileprivate var hmacAlgorithm: CCHmacAlgorithm {
@@ -66,49 +66,49 @@ public enum CryptoAlgorithm {
     }
 }
 
-public protocol Hashing {
-    associatedtype T
-    func digest(_ algorithm: CryptoAlgorithm, key: String?) -> T
+public protocol Hashable {
+    associatedtype Hash
+    func digest(_ algorithm: Algorithm, key: String?) -> Hash
 
-    var md5: T { get }
-    var sha1: T { get }
-    var sha224: T { get }
-    var sha256: T { get }
-    var sha384: T { get }
-    var sha512: T { get }
+    var md5: Hash { get }
+    var sha1: Hash { get }
+    var sha224: Hash { get }
+    var sha256: Hash { get }
+    var sha384: Hash { get }
+    var sha512: Hash { get }
 }
 
-extension Hashing {
+extension Hashable {
 
-    public var md5: T {
+    public var md5: Hash {
         return digest(.md5, key: nil)
     }
 
-    public var sha1: T {
+    public var sha1: Hash {
         return digest(.sha1, key: nil)
     }
 
-    public var sha224: T {
+    public var sha224: Hash {
         return digest(.sha224, key: nil)
     }
 
-    public var sha256: T {
+    public var sha256: Hash {
         return digest(.sha256, key: nil)
     }
 
-    public var sha384: T {
+    public var sha384: Hash {
         return digest(.sha384, key: nil)
     }
 
-    public var sha512: T {
+    public var sha512: Hash {
         return digest(.sha512, key: nil)
     }
 
 }
 
-extension String : Hashing {
+extension String: Hashable {
 
-    public func digest(_ algorithm: CryptoAlgorithm, key: String? = nil) -> String {
+    public func digest(_ algorithm: Algorithm, key: String? = nil) -> String {
         let str = Array(self.utf8CString)
         let strLen = str.count-1
         let digestLen = algorithm.digestLength
@@ -131,9 +131,9 @@ extension String : Hashing {
 
 }
 
-extension Data : Hashing {
+extension Data: Hashable {
 
-    public func digest(_ algorithm: CryptoAlgorithm, key: String? = nil) -> Data {
+    public func digest(_ algorithm: Algorithm, key: String? = nil) -> Data {
         let count = self.count
         let digestLen = algorithm.digestLength
 

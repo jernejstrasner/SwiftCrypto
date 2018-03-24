@@ -1,6 +1,6 @@
 // The MIT License (MIT)
 //
-// Copyright (c) 2015 Jernej Strasner
+// Copyright (c) 2018 Jernej Strasner
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -50,7 +50,7 @@ class SwiftCryptoTests: XCTestCase {
     }
 
     func testHMACPerformance() {
-        let algorithms: [CryptoAlgorithm] = [.md5, .sha1, .sha224, .sha256, .sha384, .sha512]
+        let algorithms: [SwiftCrypto.Algorithm] = [.md5, .sha1, .sha224, .sha256, .sha384, .sha512]
         let strings = generateTestStrings(100)
         let key = "test key"
         measure {
@@ -63,7 +63,7 @@ class SwiftCryptoTests: XCTestCase {
     }
 
     func testDigestPerformance() {
-        let algorithms: [CryptoAlgorithm] = [.md5, .sha1, .sha224, .sha256, .sha384, .sha512]
+        let algorithms: [SwiftCrypto.Algorithm] = [.md5, .sha1, .sha224, .sha256, .sha384, .sha512]
         let strings = generateTestStrings(100)
         measure {
             for a in algorithms {
