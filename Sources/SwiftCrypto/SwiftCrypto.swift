@@ -39,7 +39,7 @@ public enum Algorithm {
         return CCHmacAlgorithm(result)
     }
 
-    fileprivate typealias DigestAlgorithm = (UnsafeRawPointer, CC_LONG, UnsafeMutablePointer<UInt8>) -> UnsafeMutablePointer<UInt8>!
+    fileprivate typealias DigestAlgorithm = (UnsafeRawPointer, CC_LONG, UnsafeMutablePointer<UInt8>) -> UnsafeMutablePointer<UInt8>?
 
     fileprivate var digestAlgorithm: DigestAlgorithm {
         switch self {
@@ -124,7 +124,7 @@ extension String: Hashable {
 
         let digest = result.toHexString(count: digestLen)
 
-        result.deallocate(capacity: digestLen)
+        result.deallocate()
 
         return digest
     }
@@ -140,7 +140,7 @@ extension Data: Hashable {
         return self.withUnsafeBytes { (bytes: UnsafePointer<UInt8>) -> Data in
             let result = UnsafeMutablePointer<UInt8>.allocate(capacity: digestLen)
             defer {
-                result.deallocate(capacity: digestLen)
+                result.deallocate()
             }
 
             if let key = key {
