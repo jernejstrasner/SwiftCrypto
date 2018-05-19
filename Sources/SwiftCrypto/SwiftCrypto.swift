@@ -108,16 +108,24 @@ extension Hashable {
 
 extension String: Hashable {
 
-    public func digest(_ algorithm: Algorithm, key: String? = nil) -> String {
+    public func digest(_ algorithm: Algorithm) -> String {
+        return digest(algorithm, key: Optional<Data>.none)
+    }
+
+    public func digest(_ algorithm: Algorithm, key: String?) -> String {
+        return digest(algorithm, key: key?.data(using: .utf8))
+    }
+
+    public func digest(_ algorithm: Algorithm, key: Data?) -> String {
         let str = Array(self.utf8CString)
         let strLen = str.count-1
         let digestLen = algorithm.digestLength
         let result = UnsafeMutablePointer<UInt8>.allocate(capacity: digestLen)
 
         if let key = key {
-            let keyStr = Array(key.utf8CString)
-            let keyLen = keyStr.count-1
-            CCHmac(algorithm.hmacAlgorithm, keyStr, keyLen, str, strLen, result)
+            key.withUnsafeBytes { body in
+                CCHmac(algorithm.hmacAlgorithm, UnsafeRawPointer(body), key.count, str, count, result)
+            }
         } else {
             _ = algorithm.digestAlgorithm(str, CC_LONG(strLen), result)
         }
@@ -133,7 +141,15 @@ extension String: Hashable {
 
 extension Data: Hashable {
 
-    public func digest(_ algorithm: Algorithm, key: String? = nil) -> Data {
+    public func digest(_ algorithm: Algorithm) -> Data {
+        return digest(algorithm, key: Optional<Data>.none)
+    }
+
+    public func digest(_ algorithm: Algorithm, key: String?) -> Data {
+        return digest(algorithm, key: key?.data(using: .utf8))
+    }
+
+    public func digest(_ algorithm: Algorithm, key: Data?) -> Data {
         let count = self.count
         let digestLen = algorithm.digestLength
 
@@ -144,9 +160,9 @@ extension Data: Hashable {
             }
 
             if let key = key {
-                let keyStr = Array(key.utf8CString)
-                let keyLen = keyStr.count-1
-                CCHmac(algorithm.hmacAlgorithm, keyStr, keyLen, bytes, count, result)
+                key.withUnsafeBytes { body in
+                    CCHmac(algorithm.hmacAlgorithm, UnsafeRawPointer(body), key.count, bytes, count, result)
+                }
             } else {
                 _ = algorithm.digestAlgorithm(bytes, CC_LONG(count), result)
             }
