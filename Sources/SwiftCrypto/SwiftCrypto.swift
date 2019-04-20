@@ -21,7 +21,7 @@
 // SOFTWARE.
 
 import Foundation
-import CCommonCrypto
+import CommonCrypto
 
 public enum Algorithm {
     case md5, sha1, sha224, sha256, sha384, sha512
